@@ -57,6 +57,16 @@ if (($userid == $DEFAULT_USERID)  && ($password == $DEFAULT_PASSWORD)) {
 $_SESSION["status"] = $status;
 echo '<br><br>Current logged in status is : ' . $status;
 
+
+
+// Incorrect login details
+function processBadLogin($status) {
+	$_SESSION["status"] = $status;
+	$_SESSION['login_error_msg'] = "Sorry, that user name or password is incorrect. Please try again.";
+	header("Location: login.php");
+	exit();		
+}
+
 ?>
 
 <form name='form1' id='form1' action="listUsers.php" method="get">
